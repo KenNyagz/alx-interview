@@ -2,6 +2,8 @@
 """pascal's triangle"""
 
 def pascal_triangle(n):
+    '''returns n lists of n integers aligning to 
+       workings of pascals tri'''
     if n <= 0:
         return []
 
