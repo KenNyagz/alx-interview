@@ -2,7 +2,7 @@
 '''
 Finds the minimum number of operations needed to achive a certain outcome
 '''
-import timeit
+
 
 def minOperations(n):
     ''' Calculates minimum number of tasks needed to achieve a result'''
