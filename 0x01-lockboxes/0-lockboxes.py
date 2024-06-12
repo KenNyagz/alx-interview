@@ -5,11 +5,11 @@ key no.as A solution that can efficiently determine if all boxes can be opened
 '''
 
 
-def canUnlockAll(boxes):
+def canUnlockAll(boxes, start=[]):
     ''' Iterative approach'''
     n = len(boxes)
     unlocked = [False] * n  # Track which boxes are unlocked
-    stack = 0  # Start with the initial box
+    stack = [start]  # Start with the initial box
 
     while stack:
         current = stack.pop()
