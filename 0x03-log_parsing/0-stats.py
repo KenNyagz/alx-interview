@@ -57,7 +57,7 @@ try:
 
         if line_count % 10 == 0:
             print_stats()
-        print(f'{status}: {size}')
+        #print(f'{status}: {size}')
 
 except KeyboardInterrupt:
     print_stats()
