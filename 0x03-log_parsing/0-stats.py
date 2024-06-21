@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 '''
-
+Script that parses though an input simulating logs and processes the data
 '''
 import sys
 import signal
