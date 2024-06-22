@@ -33,32 +33,40 @@ def signal_handler(sig, frame):
     sys.exit(0)
 
 
-signal.signal(signal.SIGINT, signal_handler)
+def main():
+    '''Entry point function calling the others'''
+    global total_size, line_count
+    signal.signal(signal.SIGINT, signal_handler)
+    try:
+        for line in sys.stdin:
+            parts = line.split()
+            if len(parts) != 9:
+                continue
 
-try:
-    for line in sys.stdin:
-        parts = line.split()
-        if len(parts) != 9:
-            continue
-        # 222.66.161.46 - [2024-06-21 20:08:45.501464] "GET /projects/260 HTTP/1.1" 404 530
-        ip, dash, date, time, method, path, protocol, status, size = parts[0], parts[1], parts[2], parts[3], parts[4], parts[5], parts[6], parts[7], parts[8]
-        if method != '"GET':
-            continue
-        try:
-            status = int(status)
-            size = int(size)
-        except ValueError:
-            continue
+            # method = parts[4]
+            status, size = parts[-2], parts[-1]
+            # if method != '"GET':
+            #    continue
+            try:
+                status = int(status)
+                size = int(size)
+            except ValueError:
+                continue
 
-        if status in status_counts:
-            status_counts[status] += 1
-        total_size += size
-        line_count += 1
+            if status in status_counts:
+                status_counts[status] += 1
+            total_size += size
+            line_count += 1
 
-        if line_count % 10 == 0:
-            print_stats()
-        #print(f'{status}: {size}')
+            if line_count % 10 == 0:
+                print_stats()
 
-except KeyboardInterrupt:
+    except KeyboardInterrupt:
+        print_stats()
+        sys.exit(0)
+
     print_stats()
-    sys.exit(0)
+
+
+if __name__ == "__main__":
+    main()
