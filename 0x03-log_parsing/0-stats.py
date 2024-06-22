@@ -43,10 +43,10 @@ def main():
             if len(parts) != 9:
                 continue
 
-            # method = parts[4]
+            method = parts[4]
             status, size = parts[-2], parts[-1]
-            # if method != '"GET':
-            #    continue
+            if method != '"GET':
+               continue
             try:
                 status = int(status)
                 size = int(size)
