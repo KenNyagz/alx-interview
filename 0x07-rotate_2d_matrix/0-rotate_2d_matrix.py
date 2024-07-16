@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 '''
-Rotating an n * n matrix 90 degrees clockwise
+Rotating an n * n matrix 90 degrees clockwise.
 '''
 
 
