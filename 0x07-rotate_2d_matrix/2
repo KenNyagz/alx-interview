@@ -1,0 +1,16 @@
+#!/usr/bin/python3
+'''
+Rotating an n * n matrix 90 degrees clockwise
+'''
+
+
+def rotate_2d_matrix(matrix):
+    '''Quarter-Rotating 2d matrix clockwise'''
+    n = len(matrix) # Assuming the matrix is a square matrix
+    for  x in range(n // 2):
+        for y in range(x, n - x - 1):
+            temp = matrix[n - 1 - y][x]
+            matrix[y][n - 1 - x] = matrix[x][y]
+            matrix[n - 1 - x][n - 1 - y] = matrix[y][n - 1 - x]
+            matrix[n - 1 - y][x] = matrix[n - 1 - x][n - 1 - y]
+            matrix[x][y] = temp
