@@ -1,12 +1,15 @@
 #!/usr/bin/python3
 '''
-sadsd asdasd
+Algorithm that marks out all prime numbers upto a given number
 '''
 
+
 def isWinner(x, nums):
-    '''adda adasda''' 
-    # Function to generate primes up to max_n using Sieve of Eratosthenes
+    '''Players choose a number after which all it's multiples are removed.
+       The player who cannot make a move before x moves are over loses'''
+    # Fn to generate primes up to number max_n using Sieve of Eratosthenes
     def sieve_of_eratosthenes(max_n):
+        '''Finds all primes up to a certain number'''
         is_prime = [True] * (max_n + 1)
         p = 2
         while p * p <= max_n:
@@ -19,19 +22,19 @@ def isWinner(x, nums):
             if is_prime[p]:
                 primes.append(p)
         return primes
-    
+
     max_n = max(nums)
     primes = sieve_of_eratosthenes(max_n)
-    
+
     maria_wins = 0
     ben_wins = 0
-    
-    for n in nums:
-        # Track which numbers are still available
+
+    for n in nums:  
+        # Track numbers that are still available
         available = [True] * (n + 1)
-        current_player = 0  # 0 for Maria, 1 for Ben
+        current_player = 0  # O for Maria, 1 for Ben
         prime_index = 0
-        
+
         while prime_index < len(primes) and primes[prime_index] <= n:
             prime = primes[prime_index]
             if available[prime]:
@@ -41,16 +44,15 @@ def isWinner(x, nums):
                 # Switch player
                 current_player = 1 - current_player
             prime_index += 1
-        
+
         if current_player == 1:
             maria_wins += 1
         else:
             ben_wins += 1
-    
-    if maria_wins > ben_wins:
-        return "Maria"
-    elif ben_wins > maria_wins:
-        return "Ben"
-    else:
-        return None
 
+        if maria_wins > ben_wins:
+            return "Maria"
+        elif ben_wins > maria_wins:
+            return "Ben"
+        else:
+            return None
