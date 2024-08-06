@@ -1,4 +1,10 @@
+#!/usr/bin/python3
+'''
+sadsd asdasd
+'''
+
 def isWinner(x, nums):
+    '''adda adasda''' 
     # Function to generate primes up to max_n using Sieve of Eratosthenes
     def sieve_of_eratosthenes(max_n):
         is_prime = [True] * (max_n + 1)
