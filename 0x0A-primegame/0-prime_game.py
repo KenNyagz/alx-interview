@@ -29,7 +29,7 @@ def isWinner(x, nums):
     maria_wins = 0
     ben_wins = 0
 
-    for n in nums:  
+    for n in nums:
         # Track numbers that are still available
         available = [True] * (n + 1)
         current_player = 0  # O for Maria, 1 for Ben
@@ -50,9 +50,9 @@ def isWinner(x, nums):
         else:
             ben_wins += 1
 
-        if maria_wins > ben_wins:
-            return "Maria"
-        elif ben_wins > maria_wins:
-            return "Ben"
-        else:
-            return None
+    if maria_wins > ben_wins:
+        return "Maria"
+    elif ben_wins > maria_wins:
+        return "Ben"
+    else:
+        return None
